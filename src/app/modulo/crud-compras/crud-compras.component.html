@@ -1,0 +1,88 @@
+<div class="container">
+<app-navbar></app-navbar>
+<form (ngSubmit)="onSubmit()" [formGroup]="compras">
+    
+    
+    <div class="row">
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="cbocliente">Cliente:</label>                
+                <select name="nmcliente" id="cbocliente" class="form-control" formControlName="cliente">
+                    <option value="">Seleccionar cliente</option>                                
+                    <option value="{{listcliente.id}}" *ngFor="let listcliente of listclientes; let j=index" >{{listcliente.nombre}}</option>                                
+                </select>   
+                <small id="emailHelp" *ngIf="compras.get('cliente').hasError('required') && compras.get('cliente').touched" class="error form-text  text-danger">Ingresa tu producto</small>
+  
+  
+            </div>
+        </div>
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="cboproducto">Producto:</label>
+                
+                <select name="nmproducto" id="cboproducto" class="form-control" formControlName="producto" (change)="VerPrecioProducto()">
+                    <option value="">Seleccionar producto</option>                                
+                    <option value="{{listproducto.id}}" *ngFor="let listproducto of listproductos; let j=index" >{{listproducto.nom_producto}}</option>                                
+                </select>  
+                <small id="emailHelp" *ngIf="compras.get('producto').hasError('required') && compras.get('producto').touched" class="form-text  text-danger">Ingrese tu stock</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="idcantidad">Cantidad:</label>
+  
+                <input type="text" class="form-control" autocomplete="off" formControlName="cantidad" id="idcantidad" aria-describedby="emailHelp" >
+                <small id="emailHelp" *ngIf="compras.get('cantidad').hasError('required') && compras.get('cantidad').touched" class="form-text  text-danger">Ingresa tu cantidad</small>
+            </div>
+        </div> 
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="idprecio">Precio:</label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="precio" id="idprecio" aria-describedby="emailHelp">
+                <small id="emailHelp" *ngIf="compras.get('precio').hasError('required') && compras.get('precio').touched" class="form-text  text-danger">Ingresa tu precio</small>
+            </div>
+        </div>       
+    </div>
+    
+  
+    
+    
+  
+    <div class="row">   
+        <div class="col-xl-6 col-md-12 col-sm-12 mt-4">
+            <button type="submit" class="btn btn-danger" [disabled]="compras.invalid">Comprar</button> &nbsp;
+            
+        </div>
+    </div>
+  </form>
+
+  <div class="mt-4">
+    <table class="table">
+          <thead class="table-dark">              
+              <tr>
+                  <th>Cliente</th>
+                  <th>Producto</th>
+                  <th>Stock</th>
+                  <th>Cantidad</th>
+                  <th>Precio</th>
+                  <th>Fecha</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let listcompra of listcompras; let j=index">
+                  
+                  <td>{{listcompra.nombre}}</td>
+                  <td>{{listcompra.nom_producto}}</td>
+                  <td>{{listcompra.stock}}</td>
+                  <td>{{listcompra.cantidad}}</td>
+                  <td>{{listcompra.precio}}</td>
+                  <td>{{listcompra.fecha}}</td>                  
+                  
+              </tr>
+          </tbody>
+    </table>
+</div>
+</div>

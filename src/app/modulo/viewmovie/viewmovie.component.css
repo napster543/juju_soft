@@ -1,0 +1,16 @@
+.episodios a{
+    text-decoration: none;
+    color: white;
+}
+
+.episodios{
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 1px 4px;
+    margin: 1px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #299ce7;
+    
+    font-weight: 500;
+}

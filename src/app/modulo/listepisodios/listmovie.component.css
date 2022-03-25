@@ -1,0 +1,32 @@
+.pagination{
+    display: inline-block;
+}
+.pagination /deep/ .ngx-pagination {
+    margin: 0;
+    padding: 0 !important;
+}
+.pagination /deep/ .ngx-pagination li{
+    border: 1px solid #e4e4e4;
+    border-radius: 3px;
+    padding: .2rem .15rem;
+}
+
+.pagination /deep/ .ngx-pagination .current{
+    padding: .4rem .75rem !important;
+}
+
+.episodios{
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 1px 4px;
+    margin: 1px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #299ce7;
+    
+    font-weight: 500;
+}
+.episodios a{
+    text-decoration: none;
+    color: white;
+}

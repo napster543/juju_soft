@@ -1,0 +1,84 @@
+<div class="container">
+<app-navbar></app-navbar>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="productos">
+    <span *ngIf="isAddMode== false">insert</span>
+    <span *ngIf="isAddMode== true">update</span>
+    <input type="hidden" formControlName="id" id="idocultoproducto" value="0">
+    <div class="row">
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="idproducto">Producto:</label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="producto" id="idproducto" aria-describedby="emailHelp">
+                <small id="emailHelp" *ngIf="productos.get('producto').hasError('required') && productos.get('producto').touched" class="error form-text  text-danger">Ingresa tu producto</small>
+  
+  
+            </div>
+        </div>
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="idstock">Stock:</label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="stock" id="idstock" aria-describedby="emailHelp">
+                <small id="emailHelp" *ngIf="productos.get('stock').hasError('required') && productos.get('stock').touched" class="form-text  text-danger">Ingrese tu stock</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="idcantidad">Cantidad:</label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="cantidad" id="idcantidad" aria-describedby="emailHelp">
+                <small id="emailHelp" *ngIf="productos.get('cantidad').hasError('required') && productos.get('cantidad').touched" class="form-text  text-danger">Ingresa tu cantidad</small>
+            </div>
+        </div> 
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="idprecio">Precio:</label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="precio" id="idprecio" aria-describedby="emailHelp">
+                <small id="emailHelp" *ngIf="productos.get('precio').hasError('required') && productos.get('precio').touched" class="form-text  text-danger">Ingresa tu precio</small>
+            </div>
+        </div>       
+    </div>
+    
+  
+    
+    
+  
+    <div class="row">   
+        <div class="col-xl-6 col-md-12 col-sm-12 mt-4">
+            <button type="submit" class="btn btn-primary" [disabled]="productos.invalid">Guardar Información</button> &nbsp;
+            <button type="button" class="btn btn-warning" (click)="LimpiarForms()">Limpiar Campos</button>
+        </div>
+    </div>
+  </form>
+
+
+  <div class="mt-4">
+      <table class="table">
+            <thead class="table-dark">              
+                <tr>
+                    <th>Id</th>
+                    <th>Producto</th>
+                    <th>Stock</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>                    
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let listproducto of listproductos; let j=index">
+                    <td>{{listproducto.id}}</td>
+                    <td>{{listproducto.nom_producto}}</td>
+                    <td>{{listproducto.stock}}</td>
+                    <td>{{listproducto.cantidad}}</td>
+                    <td>{{listproducto.precio}}</td>                    
+                    <td>
+                        <span class="btn  btn-primary" (click)="UpProducto(listproducto.id)">Editar</span> &nbsp;
+                        <span class="btn  btn-danger" (click)="EliminarProducto(listproducto.id)">Eliminar</span>
+                    </td>
+                </tr>
+            </tbody>
+      </table>
+  </div> 
+</div>

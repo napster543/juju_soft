@@ -1,0 +1,22 @@
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="../../assets/icon.png" id="icon" alt="User Icon" />
+      </div>
+  
+      <!-- Login Form -->
+      <form>      
+        <input type="text" [(ngModel)]="InUsuario" id="login" class="fadeIn second" name="login" placeholder="Usuario">
+        <input type="password" [(ngModel)]="InPassword" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+        <input type="button" (click)="LogearUsuario()" class=" btn-danger fadeIn fourth" value="Ingresar">
+      </form>
+  
+      <!-- Remind Passowrd -->
+   
+  
+    </div>
+  </div> 

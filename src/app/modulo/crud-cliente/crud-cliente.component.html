@@ -1,0 +1,113 @@
+<div class="container">
+<app-navbar></app-navbar>
+<form (ngSubmit)="onSubmit()" [formGroup]="clientes">
+    <span *ngIf="isAddMode== false">insert</span>
+    <span *ngIf="isAddMode== true">update</span>
+    <input type="hidden" formControlName="id" id="idocultocliente" value="0">
+    <div class="row">
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="idnombre">Nombre:</label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="nombre" id="idnombre" aria-describedby="emailHelp">
+                <small id="emailHelp" *ngIf="clientes.get('nombre').hasError('required') && clientes.get('nombre').touched" class="error form-text  text-danger">Ingresa tu nombre</small>
+  
+  
+            </div>
+        </div>
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="idapellido">Apellido:</label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="apellido" id="idapellido" aria-describedby="emailHelp">
+                <small id="emailHelp" *ngIf="clientes.get('apellido').hasError('required') && clientes.get('apellido').touched" class="form-text  text-danger">Ingrese tu apellido</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="iddireccion">Dirección:</label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="direccion" id="iddireccion" aria-describedby="emailHelp">
+                <small id="emailHelp" *ngIf="clientes.get('direccion').hasError('required') && clientes.get('direccion').touched" class="form-text  text-danger">Ingresa tu direccion</small>
+            </div>
+        </div>        
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="idedad">Edad:</label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="edad" id="idedad" aria-describedby="emailHelp">
+                <small id="emailHelp" *ngIf="clientes.get('edad').hasError('required') && clientes.get('edad').touched" class="form-text  text-danger">Ingresa tu edad</small>
+            </div>
+        </div>        
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="idtelefono">Telefono:</label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="telefono" id="idtelefono" aria-describedby="emailHelp">
+                <small id="emailHelp" *ngIf="clientes.get('telefono').hasError('required') && clientes.get('telefono').touched" class="form-text  text-danger">Ingresa tu telefono</small>
+            </div>
+        </div>
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="idcelular">Celular:</label>
+                <input type="text" class="form-control" autocomplete="off" formControlName="celular" id="idcelular" aria-describedby="emailHelp">
+                <small id="emailHelp" *ngIf="clientes.get('celular').hasError('required') && clientes.get('celular').touched" class="form-text  text-danger">Ingresa tu celular</small>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="idcorreo">Correo:</label>
+                <input type="email" class="form-control" autocomplete="off" formControlName="correo" id="idcorreo" aria-describedby="emailHelp">
+                <small id="emailHelp" *ngIf="clientes.get('correo').hasError('required') && clientes.get('correo').touched" class="form-text text-danger">Ingresa tu correo</small>
+            </div>
+        </div>
+        <div class="col-xl-6 col-md-12 col-sm-12">
+            
+        </div>
+    </div>
+    
+  
+    <div class="row">   
+        <div class="col-xl-6 col-md-12 col-sm-12 mt-4">
+            <button type="submit" class="btn btn-primary" [disabled]="clientes.invalid">Guardar Información</button> &nbsp;
+            <button type="button" class="btn btn-warning" (click)="LimpiarForms()">Limpiar Campos</button>
+        </div>
+    </div>
+  </form>
+
+
+  <div class="mt-4">
+      <table class="table">
+            <thead class="table-dark">              
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Direccion</th>
+                    <th>Edad</th>
+                    <th>Telefono</th>
+                    <th>Celular</th>
+                    <th>correo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let listcliente of listclientes; let j=index">
+                    <td>{{listcliente.id}}</td>
+                    <td>{{listcliente.nombre}}</td>
+                    <td>{{listcliente.apellido}}</td>
+                    <td>{{listcliente.edad}}</td>
+                    <td>{{listcliente.telefono}}</td>
+                    <td>{{listcliente.celular}}</td>
+                    <td>{{listcliente.correo}}</td>
+                    <td>
+                        <span class="btn  btn-primary" (click)="UpCliente(listcliente.id)">Editar</span> &nbsp;
+                        <span class="btn  btn-danger" (click)="EliminarCliente(listcliente.id)">Eliminar</span>
+                    </td>
+                </tr>
+            </tbody>
+      </table>
+  </div>
+</div>
